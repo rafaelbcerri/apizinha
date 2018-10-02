@@ -1,11 +1,8 @@
 const Sequelize = require('sequelize');
 
-const database = new Sequelize('laboratoria', 'username', 'password', {
-  host: 'localhost',
-  dialect: 'sqlite',
-  // SQLite only
-  storage: './laboratoria.sqlite'
-});
+const database = new Sequelize(
+  process.env.CLEARDB_DATABASE_URL
+);
 
 database
   .authenticate()
