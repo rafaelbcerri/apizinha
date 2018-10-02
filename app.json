@@ -1,0 +1,8 @@
+{
+  "name": "PedeToca",
+  "description": "Peça a sua música e nós tocamos aqui",
+  "repository": "https://github.com/danicuki/relational-db-backend",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}
+
