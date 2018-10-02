@@ -46,11 +46,11 @@ app.get('/artists/:id/links', function (request, response) {
 });
 
 app.get('/tracks', function (request, response) {
-  //implementar a sua
+  response.sendStatus(404);
 });
 
 app.get('/tracks/:id', function (request, response) {
-  //implementar a sua
+  response.sendStatus(404);
 });
 
 app.listen(port);
