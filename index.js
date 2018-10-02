@@ -1,6 +1,9 @@
 Track = require("./model/track");
 Link = require("./model/link");
 Artist = require("./model/artist");
+Jukebox = require('./model/jukebox');
+User = require('./model/user');
+TrackRequest = require('./model/track_request');
 
 const express = require('express');
 const path = require('path');
