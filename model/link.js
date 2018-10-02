@@ -6,7 +6,10 @@ const Link = database.define('link', {
     type: Sequelize.STRING
   },
   url: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    validate: {
+      isUrl: true
+    }
   }
 });
 

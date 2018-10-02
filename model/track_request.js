@@ -5,7 +5,7 @@ const User = require('./user');
 
 const TrackRequest = database.define('track_request', {
   timestamp: {
-    type: Sequelize.STRING, allowNull: false,
+    type: Sequelize.STRING, allowNull: false
   },
 });
 

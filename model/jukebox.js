@@ -3,7 +3,7 @@ const database = require('./database');
 
 const Jukebox = database.define('jukebox', {
   name: {
-    type: Sequelize.STRING, allowNull: false,
+    type: Sequelize.STRING, allowNull: false
   },
   city: {
     type: Sequelize.STRING, allowNull: false, length: 200
