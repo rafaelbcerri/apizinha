@@ -1,0 +1,692 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Essa é a API da PedeToca.",
+    "version": "1.0.0",
+    "title": "PedeToca API",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "rafaelbcerri@gmail.com"
+    }
+  },
+  "host": "peaceful-badlands-98440.herokuapp.com",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "artists",
+      "description": "Artists endpoint"
+    },
+    {
+      "name": "tracks",
+      "description": "Tracks endpoint"
+    },
+    {
+      "name": "users",
+      "description": "Users endpoint"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Get user data by id",
+        "description": "",
+        "operationId": "getUserById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id that needs to be fetched.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GetUser"
+            }
+          },
+          "401": {
+            "description": "Unauthorizedd"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Make user login",
+        "description": "",
+        "operationId": "login",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "The user email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "The user password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/signup": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Create user",
+        "description": "",
+        "operationId": "signup",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "The user name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "The user email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "The user password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/artists": {
+      "get": {
+        "tags": [
+          "artists"
+        ],
+        "summary": "Get all artists",
+        "description": "",
+        "operationId": "getArtists",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Artists"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "artists"
+        ],
+        "summary": "Create artist",
+        "description": "",
+        "operationId": "createArtist",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "The artist name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "genre",
+            "in": "formData",
+            "description": "The artist genre",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful",
+            "schema": {
+              "$ref": "#/definitions/Artist"
+            }
+          }
+        }
+      }
+    },
+    "/artists/{id}": {
+      "get": {
+        "tags": [
+          "artists"
+        ],
+        "summary": "Get artist",
+        "description": "",
+        "operationId": "getArtistById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id that needs to be fetched.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Artist"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "artists"
+        ],
+        "summary": "Update artist",
+        "description": "",
+        "operationId": "updateArtist",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id that needs to be fetched.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "The artist name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "genre",
+            "in": "formData",
+            "description": "The artist genre",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful",
+            "schema": {
+              "$ref": "#/definitions/Artist"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "artists"
+        ],
+        "summary": "Delete artist",
+        "description": "",
+        "operationId": "deleteArtist",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id that needs to be fetched.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/artists/{artistId}/tracks": {
+      "get": {
+        "tags": [
+          "artists"
+        ],
+        "summary": "Get tracks from artist",
+        "description": "",
+        "operationId": "getTracksFromArtists",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "description": "The artistId that needs to be fetched.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ArtistTracks"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/artists/{artistId}/tracks/{id}": {
+      "post": {
+        "tags": [
+          "artists"
+        ],
+        "summary": "Associate track with artist",
+        "description": "",
+        "operationId": "associateTrackWithArtist",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "description": "The artistId that needs to be fetched.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The track id that needs to be fetched.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful",
+            "schema": {
+              "$ref": "#/definitions/ArtistTrack"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "artists"
+        ],
+        "summary": "Remove track from artist",
+        "description": "",
+        "operationId": "deleteTrackFromArtist",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "description": "The artistId that needs to be fetched.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The track id that needs to be fetched.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/tracks": {
+      "get": {
+        "tags": [
+          "tracks"
+        ],
+        "summary": "Get tracks",
+        "description": "",
+        "operationId": "getTracks",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Tracks"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "tracks"
+        ],
+        "summary": "Create track",
+        "description": "",
+        "operationId": "createTrack",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "title",
+            "in": "formData",
+            "description": "The track title",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "url",
+            "in": "formData",
+            "description": "The track url",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful",
+            "schema": {
+              "$ref": "#/definitions/Track"
+            }
+          }
+        }
+      }
+    },
+    "/tracks/{id}": {
+      "get": {
+        "tags": [
+          "tracks"
+        ],
+        "summary": "Get track",
+        "description": "",
+        "operationId": "getTrackById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id that needs to be fetched.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Track"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "tracks"
+        ],
+        "summary": "Update track",
+        "description": "",
+        "operationId": "updateTrack",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id that needs to be fetched.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "in": "formData",
+            "description": "The track title",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "url",
+            "in": "formData",
+            "description": "The track url",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful",
+            "schema": {
+              "$ref": "#/definitions/Track"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "tracks"
+        ],
+        "summary": "Delete track",
+        "description": "",
+        "operationId": "deleteTrack",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id that needs to be fetched.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "GetUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "Artist": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "genre": {
+          "type": "string"
+        }
+      }
+    },
+    "Artists": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Artist"
+      }
+    },
+    "Track": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "Tracks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Track"
+      }
+    },
+    "ArtistTrack": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "artist": {
+          "$ref": "#/definitions/Artist"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "ArtistTracks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ArtistTrack"
+      }
+    }
+  }
+}
