@@ -2,9 +2,10 @@ const express = require('express');
 const port = process.env.PORT || 8080;
 const db = require("./models/index");
 const cors = require("cors");
+require('dotenv').config()
 
 //Sync database
-db.sequelize.sync();
+// db.sequelize.sync();
 
 const Util = require('./util');
 const Passport = require('./routes/authentication').passport;
@@ -28,7 +29,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(require('express-session')({
   secret: 'banana peixinho',
   resave: true,
-  saveUninitialized: true 
+  saveUninitialized: true
 }));
 
 app.use(Passport.initialize());
